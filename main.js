@@ -19,21 +19,27 @@ function verify()
 
 var dadosLista = [];
 
-function salvarUser() {
+function saveUser() {
     let nomeUser = document.getElementById("nomeUser").value;
 
     if (nomeUser) {
         dadosLista.push(nomeUser);
-        criaLista();
+        createList();
     }
 }
 
-function criaLista() {
-    let tabela = document.getElementById("tabela").innerHTML;
-    innerHTML = "<tr><th>Nome Usuário</th><th>Ações</th></tr>";
+function createList() {
+    let tabela = document.getElementById("tabela").innerHTML = "<tr><th>Nome Usuário</th><th>Ações</th></tr>";
 
     for (let i = 0; i < dadosLista.length; i++) {
-        tabela += "<tr><td>" + dadosLista[i] + "</td><td><button class=\"btn btn-success\" onclick=\"\">Editar</button><button class=\"btn btn-danger\" onlick=\"\">Excluir</button></td></tr>";
+        tabela += "<tr><td>" + dadosLista[i] + "</td><td><button class=\"btn btn-success\" onclick=\"edit(this.parentNode.parentNode.rowIndex)\">Editar</button><button class=\"btn btn-danger\" onlick=\"\">Excluir</button></td></tr>";
         document.getElementById("tabela").innerHTML = tabela;
     }
+}
+
+// NAME EDIT FUNCTION
+
+function edit(i) {
+    document.getElementById("nomeUser").value = dadosLista[i - 1];
+    dadosLista.splice(dadosLista[i - 1], 1)
 }

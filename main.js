@@ -2,6 +2,8 @@
 
 function verify()
 {
+    // verifica se usuario e senha estao preenchidos
+
     let user = document.getElementById("loginEmail").value;
     let pswr = document.getElementById("loginSenha").value;
 
